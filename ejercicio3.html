@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>
+                Resultado: <span class="resultado"></span>
+            </h2>
+            <div>
+                <div>
+                    <div>
+                        <label for="">Valor 1</label>
+                        <input id="valor1" type="text">
+                    </div>
+                    <div>
+                        <label for="">Valor 2</label>
+                        <input id="valor2" type="text">
+                    </div>
+                    <div style="display: flex">
+                        <button id="btn-sumar" type="button">
+                            Sumar
+                        </button>
+                        <button id="btn-restar" type="button">
+                            Restar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // SUMA
+        const botonsumar = document.querySelector("#btn-sumar")
+        botonsumar.addEventListener("click",() =>{
+            const valor1 = document.querySelector("#valor1")
+            const valor2 = document.querySelector("#valor2")
+            const resultado = document.querySelector(".resultado")
+            resultado.innerHTML = parseInt(valor1.value) + parseInt(valor2.value)
+})
+// // RESTA
+        const botonrestar = document.querySelector("#btn-restar")
+        botonrestar.addEventListener("click",() =>{
+            const valor1 = document.querySelector("#valor1")
+            const valor2 = document.querySelector("#valor2")
+            const resultado = document.querySelector(".resultado")
+            if (parseInt(valor1.value) - parseInt(valor2.value) < 0){
+                resultado.innerHTML = 0
+            }else{
+                resultado.innerHTML = parseInt(valor1.value) - parseInt(valor2.value)
+            }
+})
+    </script>
+</body>
+
+</html>

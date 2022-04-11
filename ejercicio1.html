@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <div>
+        <div style="width: 40%;margin: 0 auto">
+            <h2>
+                Escríbenos !!!
+            </h2>
+            <div class="resultado" style="color:green;font-style: italic">
+            </div>
+            <form id="formulario" onsubmit="false">
+                <div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Nombre completo
+                        </label>
+                        <input id="nombre" type="text">
+                        <p class="errorNombre" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Asunto
+                        </label>
+                        <input id="asunto" type="text">
+                        <p class="errorAsunto" style="color:red;font-style: italic;"></p>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <label>
+                        Mensaje
+                    </label>
+                    <textarea id="mensaje"></textarea>
+                    <p class="errorMensaje" style="color:red;font-style: italic;"></p>
+                </div>
+                <div>
+                    <button id="botton" type="button">
+                        Envíar mensaje
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const button = document.querySelector("#botton")
+        button.addEventListener("click", ()=>{
+            const resultado = document.querySelector(".resultado")
+            let patron = new RegExp('^[A-Z]+$', 'i')
+            const nombre = document.querySelector("#nombre")
+            const errorNombre = document.querySelector(".errorNombre")
+            const asunto = document.querySelector("#asunto")
+            const errorAsunto = document.querySelector(".errorAsunto")
+            const mensaje = document.querySelector("#mensaje")
+            const errorMensaje = document.querySelector(".errorMensaje")
+
+
+        if(nombre.value == "" ){
+            errorNombre.innerHTML = "Nombre es requerido"
+            errorNombre.setAttribute("style", "color: red")
+        }else if (!patron.test(nombre.value)){
+            errorNombre.innerHTML = "Solo letras son permitidas!!"
+        }else{
+            errorNombre.innerHTML = ""
+        }
+        if(asunto.value == ""){
+            errorAsunto.innerHTML = "Asunto es requerido"
+            errorAsunto.setAttribute("style", "color: red")
+        }else if (!patron.test(asunto.value)){
+            errorAsunto.innerHTML = "Solo letras son permitidas!!!"
+        }else{
+            errorAsunto.innerHTML = ""
+        }
+        if(mensaje.value == ""){
+            errorMensaje.innerHTML = "Asunto es requerido"
+            errorMensaje.setAttribute("style", "color: red")
+        }else if (!patron.test(mensaje.value)){
+            errorMensaje.innerHTML = "Solo letras son permitidas!!!"
+        }else{
+            errorMensaje.innerHTML = ""
+        }
+        if (nombre.value != "" && asunto.value != "" && mensaje.value != "" && patron.test(nombre.value) && patron.test(asunto.value) && patron.test(mensaje.value)){
+            resultado.innerHTML = "Mensaje enviado con exito!!"
+            resultado.setAttribute("style", "color:green")
+        }else{
+            resultado.innerHTML = ""
+        }
+})
+    </script>
+</body>
+
+</html>
